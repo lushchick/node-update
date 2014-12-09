@@ -6,7 +6,7 @@ NODE_WEBSITE = 'http://nodejs.org/'
 
 def get_latest_node_version():
     res = urllib2.urlopen(NODE_WEBSITE).read()
-    match = re.search(r'<p>Current Version: (.+)</p>', res)
+    match = re.search(r'Current Version: ([v\d\.]+)', res)
     if (match):
         return match.group(1)
     
@@ -34,7 +34,7 @@ def install(version):
         version = 'v' + version
 
     if (installedVersion == version):
-        print 'You are running the latest version my friend'
+        print 'You are running the latest version'
         return
 
     print 'Upgrading node to %s. Do you want to continue? (y/n):' % version,
